@@ -12,6 +12,8 @@ const sessionsRouter = require("./routes/sessions");
 const usersRouter = require("./routes/users");
 
 const app = express();
+const cors = require("cors");
+app.use(cors());
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
