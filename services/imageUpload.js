@@ -22,7 +22,7 @@ const upload = multer({
   storage: multerS3({
     acl: "public-read",
     s3,
-    bucket: {acebook-pics},
+    bucket: "acebook-pics",
     metadata: function (req, file, cb) {
       cb(null, { fieldName: "TESTING_METADATA" });
     },
