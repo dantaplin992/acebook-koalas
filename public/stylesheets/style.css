@@ -152,13 +152,14 @@ input[type=text], input[type=password], input[type=email] {
 }
 
 .post_author {
-  font-size: 14px;
+  font-size: 18px;
   font-weight: bolder;
   padding: 2px;
   float: left;
 }
 
 .post_content {
+  font-size: 14px;
   margin-top: 8%;
   padding: 2%;
   text-align: left;
