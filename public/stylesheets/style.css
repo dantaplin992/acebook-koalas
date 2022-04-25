@@ -27,8 +27,8 @@ a {
 
 .under_header {
   width: 100%;
-  height: 50%;
-  padding: 50px;
+  height: 40%;
+  padding: 40px;
 }
 
 .login_form {
@@ -41,10 +41,10 @@ a {
 
 .page-header {
   margin: auto;
-  width: 50%;
+  width: 65%;
   padding: 20px;
   text-align: center;
-  background-color: white;
+  background-color: whitesmoke;
 }
 
 .nav-bar {
@@ -62,7 +62,7 @@ a {
   text-align: center;
 }
 
-input[type=submit] {
+input[type=submit], .add_friend_button, .like_button, .delete_button {
   background-color: #4267B2;
   color: white;
   border: none;
@@ -71,6 +71,14 @@ input[type=submit] {
   font-size: 14px;
   display: inline-block;
   border-radius: 4px;
+}
+
+.add_friend_button {
+  float: right;
+}
+
+.like_button {
+  padding: 5px;
 }
 
 input[type=text], input[type=password], input[type=email] {
@@ -128,6 +136,10 @@ input[type=text], input[type=password], input[type=email] {
   padding: 2%;
 }
 
+#new_post_text {
+  resize: none;
+}
+
 .new_post_button {
   font-size: 18px;
   background-color: #4267B2;
@@ -143,16 +155,21 @@ input[type=text], input[type=password], input[type=email] {
   font-size: 14px;
   font-weight: bolder;
   padding: 2px;
+  float: left;
 }
 
 .post_content {
-  padding: 10px;
+  margin-top: 8%;
+  padding: 2%;
+  text-align: left;
 }
 
 .post_date {
-  padding: 10px;
+  margin-top: 2%;
+  margin-bottom: 4%;
   font-size: 12px;
   color: darkgrey;
+  text-align: left;
 }
 
 .like_button {
@@ -161,4 +178,13 @@ input[type=text], input[type=password], input[type=email] {
 
 .delete_button_container {
   margin-top: 1%;
+}
+
+.user_name {
+  float: left;
+  width: 33%
+}
+
+#log_out_form {
+  float: right;
 }
