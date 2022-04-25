@@ -13,7 +13,7 @@ describe("Authentication", () => {
     cy.get("#submit").click();
 
     cy.url().should("include", "/posts");
-    cy.contains("a", "New post");
+    cy.contains("button", "New post");
   });
 
   it('A user can click a link to the singup page if they are not a member', () => {
