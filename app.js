@@ -85,12 +85,12 @@ app.use((err, req, res) => {
 
 hbs.registerHelper('show_edit_post_button', (userId, postUserId) => { 
   if (userId === postUserId) {
-    return `<span id="edit_post"><button>Edit post</button></span>` }
+    return `<span id="edit_post"><button class="submit-button">Edit post</button></span>` }
 });
 
 hbs.registerHelper('show_delete_post_button', (userId, postUserId) => { 
   if (userId === postUserId) {
-    return ` <span id="delete_post"><button>Delete post</button></span>` }
+    return ` <span id="delete_post"><button class="submit-button">Delete post</button></span>` }
 });
 
 hbs.registerHelper('show_add_friend_button', (userId, postUserId) => { 
