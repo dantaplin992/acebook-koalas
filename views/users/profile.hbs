@@ -4,16 +4,27 @@
   <script src="/javascripts/acceptRejectRequests.js"></script>
 </head>
 <body>
-<h1 class="page-header">{{pageHeader}}</h1>
+<div class="page-header">
+  <h1>{{pageHeader}}</h2>
+</div>
 <h2>Hello, {{user.firstName}}</h2>
-<div>
+<div class="post">
+  <h2>Info:</h2>
   <ul>
     <li>First name: {{user.firstName}}</li>
     <li>Surname: {{user.surname}}</li>
     <li>E-mail: {{user.email}}</li>
   </ul>
 </div>
-<div class="friend_request_section">
+<div class="post" id="friends_section">
+  <h2>Friends:</h2>
+  {{#each user.friends}}
+    <div class="friend" id="{{this._id}}">
+      {{this.firstName}} {{this.surname}}
+    </div>
+  {{/each}}
+</div>
+<div class="post" id="friend_request_section">
   <h2>Friend Requests:</h2>
   {{#each user.friendRequests}}
     <div class="friend_request" id="{{this.id}}">

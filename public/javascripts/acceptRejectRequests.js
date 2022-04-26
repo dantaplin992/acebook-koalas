@@ -27,7 +27,12 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
-  socket.on('acceptedFriend', (newFriendId) => {
-    console.log(newFriendId)
+  socket.on('acceptedFriend', (newFriend) => {
+    console.log(newFriend)
+    // const friendsSection = document.querySelector('#friends_section')
+    // const friendTextContainer = document.createElement('div')
+    // friendTextContainer.setAttribute('class', 'post')
+    // friendTextContainer.setAttribute('id', newFriend._id)
+    // friendTextContainer
   })
 })

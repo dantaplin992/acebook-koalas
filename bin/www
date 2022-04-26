@@ -200,14 +200,12 @@ io.on('connection', (socket) => {
     User.findOne(
       { _id: params.friendId }
     ).then((result) => {
-      console.log(result)
-
       User.updateOne(
         { _id: params.myId },
         { $push: { friends: result }, $pull: { friendRequests: result } }
-      ).then((result) => {
+      ).then(() => {
         console.log(result)
-        socket.emit('acceptedFriend', params.friendId)
+        socket.emit('acceptedFriend', result)
       })
     })
   })
