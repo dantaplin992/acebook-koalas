@@ -10,4 +10,14 @@
     <li>E-mail: {{user.email}}</li>
   </ul>
 </div>
+<div class="friend_request_section">
+  <h2>Friend Requests:</h2>
+  {{#each user.friendRequests}}
+    <div>
+      <span>{{this.firstName}} {{this.surname}}</span>
+      <button>Accept</button>
+      <button>Reject</button>
+    </div>
+  {{/each}}
+</div>
 </body>
