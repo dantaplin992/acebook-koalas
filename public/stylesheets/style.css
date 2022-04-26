@@ -40,7 +40,6 @@ a {
 }
 
 .page-header {
-  margin: auto;
   width: 65%;
   padding: 20px;
   text-align: center;
@@ -71,6 +70,7 @@ input[type=submit], .add_friend_button, .like_button, .delete_button {
   font-size: 14px;
   display: inline-block;
   border-radius: 4px;
+  text-decoration: none;
 }
 
 .add_friend_button {

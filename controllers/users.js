@@ -15,7 +15,11 @@ const UsersController = {
     });
   },
   Profile: (req, res) => {
-    res.render("users/profile", { pageHeader: "Profile", user: req.session.user });
+    User.findOne(
+      { _id: req.session.user._id }
+    ).then((result) => {
+      res.render("users/profile", { pageHeader: "Profile", user: result });
+    })
   }
 };
 

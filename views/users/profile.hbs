@@ -1,4 +1,7 @@
 <head>
+  <meta name="user_id" content="{{user._id}}">
+  <script src="https://cdn.socket.io/3.0.5/socket.io.min.js"></script>
+  <script src="/javascripts/acceptRejectRequests.js"></script>
 </head>
 <body>
 <h1 class="page-header">{{pageHeader}}</h1>
@@ -13,10 +16,11 @@
 <div class="friend_request_section">
   <h2>Friend Requests:</h2>
   {{#each user.friendRequests}}
-    <div>
+    <div class="friend_request" id="{{this.id}}">
       <span>{{this.firstName}} {{this.surname}}</span>
-      <button>Accept</button>
-      <button>Reject</button>
+      <span hidden>{{this._id}}</span>
+      <button class="accept_friend">Accept</button>
+      <button class="reject_friend">Reject</button>
     </div>
   {{/each}}
 </div>
