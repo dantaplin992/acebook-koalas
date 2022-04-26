@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const acceptButtons = document.querySelectorAll('.accept_friend')
   const rejectButtons = document.querySelectorAll('.reject_friend')
   const friendsSection = document.querySelector('#friends_section')
-  const friendRequestSection = document.querySelector('#friend_request_section')
+  const requestMessage = document.querySelector('#request_message')
   const userId = document.getElementsByName("user_id")[0].content
   const socket = io()
 
@@ -39,11 +39,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const request = document.querySelector(`[id="${newFriend._id}"]`)
     request.remove()
+    requestMessage.setAttribute('class', 'request_message_accept')
+    requestMessage.innerText = `Accepted Friend Request for ${newFriend.firstName} ${newFriend.surname}`
   })
 
   socket.on('rejectedFriend', (rejected) => {
     console.log(`Rejected friend: ${rejected}`)
     const requestToDelete = document.querySelector(`[id="${rejected._id}"]`)
     requestToDelete.remove()
+    requestMessage.setAttribute('class', 'request_message_reject')
+    requestMessage.innerText = `Removed Friend Request for ${rejected.firstName} ${rejected.surname}`
   })
 })

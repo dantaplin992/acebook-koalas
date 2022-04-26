@@ -194,3 +194,11 @@ input[type=text], input[type=password], input[type=email] {
 #log_out_form {
   float: right;
 }
+
+.request_message_accept {
+  color:forestgreen;
+}
+
+.request_message_reject {
+  color:crimson;
+}
