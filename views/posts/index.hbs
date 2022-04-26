@@ -31,7 +31,7 @@
       <div class="post_author">
         {{this.authorFirstName}} {{this.authorSurname}}
       </div>
-      <button class="add_friend_button">+ Add Friend</button>
+      {{{ show_add_friend_button ../user._id this.userId }}}
       <div class="post_content">
         {{this.message}}
       </div>
