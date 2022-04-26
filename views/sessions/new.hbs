@@ -1,5 +1,14 @@
 <head>
-
+<script>
+  function togglePassword() {
+  var x = document.getElementById("password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
 </head>
 
 <body>
@@ -9,6 +18,7 @@
     <input id="email" type="email" name="email" value="">
     <label for="password">Password: </label>
     <input id="password" type="password" name="password" value="">
+    <input type="checkbox" onclick="togglePassword()">
     <input id="submit" type="submit" value="Submit" class="submit-button">
   </form>
   <div class="signup_link">
