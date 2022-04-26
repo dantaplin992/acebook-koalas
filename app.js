@@ -93,5 +93,10 @@ hbs.registerHelper('show_delete_post_button', (userId, postUserId) => {
     return ` <span id="delete_post"><button>Delete post</button></span>` }
 });
 
+hbs.registerHelper('show_add_friend_button', (userId, postUserId) => { 
+  if (userId != postUserId) {
+    return `<button class="add_friend_button">+ Add Friend</button>` }
+});
+
 
 module.exports = app;
