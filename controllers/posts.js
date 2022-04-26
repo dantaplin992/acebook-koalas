@@ -1,4 +1,3 @@
-const { json } = require("express/lib/response");
 const Post = require("../models/post");
 
 const PostsController = {
