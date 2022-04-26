@@ -209,4 +209,19 @@ io.on('connection', (socket) => {
       })
     })
   })
+
+  socket.on('rejectFriend', (params) => {
+
+    User.findOne(
+      { _id: params.friendId }
+    ).then((result) => {
+      
+      User.updateOne(
+        { _id: params.myId },
+        { $pull: { friendRequests: result } }
+      ).then(() => {
+        socket.emit('rejectedFriend', result)
+      })
+    })
+  })
 })

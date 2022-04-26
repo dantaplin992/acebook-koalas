@@ -40,4 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const request = document.querySelector(`[id="${newFriend._id}"]`)
     request.remove()
   })
+
+  socket.on('rejectedFriend', (rejected) => {
+    console.log(`Rejected friend: ${rejected}`)
+    const requestToDelete = document.querySelector(`[id="${rejected._id}"]`)
+    requestToDelete.remove()
+  })
 })
