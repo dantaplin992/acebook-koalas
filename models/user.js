@@ -5,6 +5,8 @@ const UserSchema = new mongoose.Schema({
   password: String,
   firstName: String,
   surname: String,
+  friends: Array,
+  friendRequests: Array,
   // profilePic:
   //   {
   //       data: Buffer,

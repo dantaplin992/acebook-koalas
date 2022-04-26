@@ -1,13 +1,21 @@
 <head>
   <script src="https://cdn.socket.io/3.0.5/socket.io.min.js"></script>
   <script src="javascripts/realtimeUpdate.js"></script>
+  <script src="javascripts/friendRequests.js"></script>
+  <!-- <script src="javascripts/newPost.js"></script> -->
   <meta name="user_id" content="{{user._id}}">
 </head>
 <body>
+  <div class="user_name">
+    <h2>{{user.firstName}} {{user.surname}}</h2>
+    <form action="/users/profile" method="get">
+      <input type="submit" value="Profile">
+    </form>
+  </div>
   <h1 class="page-header">Timeline</h1>
   <div class="new_post_form">
     <div>
-      <textarea id="new_post_text"></textarea>
+      <textarea id="new_post_text" rows="3" cols="55"></textarea>
     </div>
     <div>
       <button class="new_post_button">New post</button>
@@ -20,6 +28,7 @@
       <div class="post_author">
         {{this.authorFirstName}} {{this.authorSurname}}
       </div>
+      {{{ show_add_friend_button ../user._id this.userId }}}
       <div class="post_content">
         {{this.message}}
       </div>

@@ -165,9 +165,62 @@ io.on('connection', (socket) => {
           userId: params.author,
         }
       ).save(
-
       ).then((res) => {
         socket.emit('addNewPost', {post: res})
+      })
+    })
+  })
+
+  socket.on('addFriend', (params) => {
+    console.log(`${params.requestUser} befriended`)
+
+    Post.findOne(
+      { _id: params.postId }
+    ).then((result) => {
+      const recipientUser = result.userId
+      console.log(recipientUser)
+
+      User.findOne(
+        { _id: params.requestUser }
+      ).then((requester) => {
+
+        console.log("Requested by: " + requester)
+
+        User.updateOne(
+          { _id: recipientUser },
+          { $push: { friendRequests: requester } }
+        ).then((res) => {
+        })
+      })
+    })
+  })
+
+  socket.on('acceptFriend', (params) => {
+
+    User.findOne(
+      { _id: params.friendId }
+    ).then((result) => {
+      User.updateOne(
+        { _id: params.myId },
+        { $push: { friends: result }, $pull: { friendRequests: result } }
+      ).then(() => {
+        console.log(result)
+        socket.emit('acceptedFriend', result)
+      })
+    })
+  })
+
+  socket.on('rejectFriend', (params) => {
+
+    User.findOne(
+      { _id: params.friendId }
+    ).then((result) => {
+      
+      User.updateOne(
+        { _id: params.myId },
+        { $pull: { friendRequests: result } }
+      ).then(() => {
+        socket.emit('rejectedFriend', result)
       })
     })
   })
