@@ -19,7 +19,7 @@
 <div class="post" id="friends_section">
   <h2>Friends:</h2>
   {{#each user.friends}}
-    <div class="friend" id="{{this._id}}">
+    <div class="friend">
       {{this.firstName}} {{this.surname}}
     </div>
   {{/each}}
@@ -27,7 +27,7 @@
 <div class="post" id="friend_request_section">
   <h2>Friend Requests:</h2>
   {{#each user.friendRequests}}
-    <div class="friend_request" id="{{this.id}}">
+    <div class="friend_request" id="{{this._id}}">
       <span>{{this.firstName}} {{this.surname}}</span>
       <span hidden>{{this._id}}</span>
       <button class="accept_friend">Accept</button>

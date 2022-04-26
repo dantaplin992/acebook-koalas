@@ -2,6 +2,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   const acceptButtons = document.querySelectorAll('.accept_friend')
   const rejectButtons = document.querySelectorAll('.reject_friend')
+  const friendsSection = document.querySelector('#friends_section')
+  const friendRequestSection = document.querySelector('#friend_request_section')
   const userId = document.getElementsByName("user_id")[0].content
   const socket = io()
 
@@ -28,11 +30,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   socket.on('acceptedFriend', (newFriend) => {
-    console.log(newFriend)
-    // const friendsSection = document.querySelector('#friends_section')
-    // const friendTextContainer = document.createElement('div')
-    // friendTextContainer.setAttribute('class', 'post')
-    // friendTextContainer.setAttribute('id', newFriend._id)
-    // friendTextContainer
+    console.log(`new friend: ${newFriend.firstName} ${newFriend.surname}`)
+    
+    const friendTextContainer = document.createElement('div')
+    friendTextContainer.setAttribute('class', 'friend')
+    friendTextContainer.innerText = `${newFriend.firstName} ${newFriend.surname}`
+    friendsSection.appendChild(friendTextContainer)
+
+    const request = document.querySelector(`[id="${newFriend._id}"]`)
+    request.remove()
   })
 })
