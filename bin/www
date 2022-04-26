@@ -165,10 +165,27 @@ io.on('connection', (socket) => {
           userId: params.author,
         }
       ).save(
-
       ).then((res) => {
         socket.emit('addNewPost', {post: res})
       })
     })
+  })
+
+  socket.on('addFriend', (params) => {
+    console.log(`${params.requestUser} befriended`)
+
+    Post.findOne(
+      { _id: params.postId }
+      ).then((result) => {
+        const recipientUser = result.userId
+        console.log(recipientUser)
+
+        User.updateOne(
+          { _id: recipientUser },
+          { $push: { friendRequests: params.requestUser } }
+        ).then((res) => {
+          console.log(res)
+        })
+      })
   })
 })

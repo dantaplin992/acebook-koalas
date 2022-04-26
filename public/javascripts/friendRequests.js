@@ -1,11 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
   const posts = document.querySelectorAll('.post')
-  for (i = 0; i < posts.length; i++) {
-    console.log("Found Post")
-    const addFriendButton = document.createElement('button')
-    addFriendButton.setAttribute('class', 'add_friend_button')
-    addFriendButton.innerText = "+ Add Friend"
-    console.log(posts[i].firstElementChild)
-    posts[i].insertBefore(addFriendButton, posts[i].children[1])
+  const socket = io()
+  const userId = document.getElementsByName("user_id")[0].content
+  const addFriendButtons = document.querySelectorAll('.add_friend_button')
+
+  for (i = 0; i < addFriendButtons.length; i++) {
+    console.log('Found friend button')
+    addFriendButtons[i].addEventListener('click', (event) => {
+      const parent = event.target.parentElement
+      const postId = parent.getAttribute('id')
+      console.log(postId)
+
+      socket.emit('addFriend', { postId: postId, requestUser: userId })
+    })
   }
+
 })
