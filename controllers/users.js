@@ -42,6 +42,13 @@ const UsersController = {
         res.redirect("/users/profile");
       })
     })
+  },
+  Delete: (req, res) => {
+    User.deleteOne(
+      { _id: req.session.user._id }
+    ).then(() => {
+      res.redirect('/sessions/new')
+    })
   }
 };
 
