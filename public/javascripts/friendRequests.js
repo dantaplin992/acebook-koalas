@@ -11,8 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const parent = event.target.parentElement
         const postId = parent.getAttribute('id')
         const authorId = parent.children[parent.children.length - 1].getAttribute('id')
-        event.target.innerText = "Request Sent"
-        event.target.setAttribute('class', 'request_badge')
+        setRequestBadge(event.target)
         reformatButtons(authorId)
         socket.emit('addFriend', { postId: postId, requestUser: userId })
       }
@@ -25,11 +24,15 @@ document.addEventListener('DOMContentLoaded', () => {
       if (thisAuthor == authorId) {
         const badge = posts[i].children[1]
         if (badge.getAttribute('class') == 'add_friend_button') {
-          badge.innerText = "Request Sent"
-          badge.setAttribute('class', 'request_badge')
+          setRequestBadge(badge)
         }
       }
     }
+  }
+
+  const setRequestBadge = (obj) => {
+    obj.innerText = "Request Sent"
+    obj.setAttribute('class', 'request_badge')
   }
 
 })
