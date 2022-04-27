@@ -322,3 +322,11 @@ input[type=text], input[type=password], input[type=email] {
 .request_message_reject {
   color:crimson;
 }
+
+button:hover, input[type="submit"]:hover {
+  background-color: #5a80cd;
+}
+
+button:active, input[type="submit"]:active {
+  background-color: #b2c6ee;
+}
