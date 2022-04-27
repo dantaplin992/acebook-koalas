@@ -47,14 +47,16 @@
         </form> 
       </div>
       <div>
-        <form id="create-comment">
+      <form class="create-comment">
         <input type="text" id="comment-box" name="comment" placeholder="Add a comment">
         <input type="hidden" name="post_id" value="{{this.id}}">
-          <input type="submit" id="add-comment" value="Comment">
-        </form>
-          <ul id="comment-list">
-
-          </ul>
+        <input type="submit" id="{{this.id}}" value="Comment">
+      </form>
+        <ul id="comment-list">
+          {{#each comments}}
+          <li>{{this.comment}}</li>
+          {{/each}}
+        </ul>
       </div>
     </div>
     {{/each}}

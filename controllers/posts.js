@@ -62,8 +62,10 @@ const PostsController = {
     res.render("posts/edit", { user: req.session.user, id: req.params.id})
   },
 
-  AddComment: (req, res) => {
-    Post.updateOne( {_id: req.body.post_id}, {$push: {comments: {
+  AddComment: async (req, res) => {
+    await console.log("body", req.body)
+    console.log("sesh", req.session.user)
+    await Post.updateOne( {_id: req.body.post_id }, {$addToSet: {comments: {
       comment: req.body.comment, 
       user: req.session.user
     }}}, (err) => {
@@ -72,7 +74,6 @@ const PostsController = {
       }
     }) 
   }
-  
 }
 
 module.exports = PostsController;
