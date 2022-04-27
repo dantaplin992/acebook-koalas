@@ -210,8 +210,17 @@ io.on('connection', (socket) => {
         { _id: params.myId },
         { $push: { friends: result }, $pull: { friendRequests: result } }
       ).then(() => {
-        console.log(result)
-        socket.emit('acceptedFriend', result)
+        User.findOne(
+          { _id: params.myId }
+        ).then((me) => {
+          User.updateOne(
+            { _id: params.friendId },
+            { $push: { friends: me} }
+          ).then(() => {
+            console.log(result)
+            socket.emit('acceptedFriend', result)
+          })
+        })
       })
     })
   })
