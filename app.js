@@ -84,12 +84,12 @@ app.use((err, req, res) => {
 ///hbs helper
 
 hbs.registerHelper('show_edit_post_button', (userId, postUserId) => { 
-  if (userId === postUserId) {
+  if (userId == postUserId) {
     return `<span id="edit_post"><button class="submit-button">Edit post</button></span>` }
 });
 
 hbs.registerHelper('show_delete_post_button', (userId, postUserId) => { 
-  if (userId === postUserId) {
+  if (userId == postUserId) {
     return ` <span id="delete_post"><button class="submit-button">Delete post</button></span>` }
 });
 
