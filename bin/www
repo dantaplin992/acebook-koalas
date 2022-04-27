@@ -180,16 +180,22 @@ io.on('connection', (socket) => {
       const recipientUser = result.userId
       console.log(recipientUser)
 
-      User.findOne(
-        { _id: params.requestUser }
-      ).then((requester) => {
+      User.updateOne(
+        { _id: params.requestUser },
+        { $push: { pendingRequests: result} }
+      ).then(() => {
 
-        console.log("Requested by: " + requester)
-
-        User.updateOne(
-          { _id: recipientUser },
-          { $push: { friendRequests: requester } }
-        ).then((res) => {
+        User.findOne(
+          { _id: params.requestUser }
+        ).then((requester) => {
+          
+          console.log("Requested by: " + requester)
+          
+          User.updateOne(
+            { _id: recipientUser },
+            { $push: { friendRequests: requester } }
+            ).then((res) => {
+          })
         })
       })
     })
