@@ -96,15 +96,20 @@ hbs.registerHelper('show_delete_post_button', (userId, postUserId) => {
 hbs.registerHelper('show_add_friend_button', (user, postUserId) => { 
   let friend = false
   let requested = false
+  let receivedRequest = false
   for (i = 0; i < user.friends.length; i++) {
     if (user.friends[i]._id == postUserId) { friend = true }
   }
   for (i = 0; i < user.pendingRequests.length; i++) {
     if (user.pendingRequests[i].userId == postUserId) { requested = true }
   }
+  for (i = 0; i < user.friendRequests.length; i++) {
+    if (user.friendRequests[i]._id == postUserId) { receivedRequest = true }
+  }
   if (user._id == postUserId) return
   if (friend) return '<button class="friend_badge">Friend</button>'
   if (requested) return '<button class="request_badge">Request Sent</button>'
+  if (receivedRequest) return '<button class="request_badge">Received Friend Request</button>'
   return `<button class="add_friend_button">+ Add Friend</button>` 
 });
 

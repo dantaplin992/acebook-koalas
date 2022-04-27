@@ -189,7 +189,7 @@ io.on('connection', (socket) => {
           { _id: params.requestUser }
         ).then((requester) => {
           
-          console.log("Requested by: " + requester)
+          console.log("Pending: " + requester.pendingRequests[0])
           
           User.updateOne(
             { _id: recipientUser },
