@@ -1,14 +1,21 @@
 const Post = require("../models/post");
+const User = require("../models/user")
 
 const PostsController = {
   Index: async (req, res) => {
     const flashMessage = await req.consumeFlash('wrongUser');
-    Post.find((err, posts) => {
-      if (err) {
-        throw err;
-      }
-      res.render("posts/index", { posts: posts.reverse(), user: req.session.user, flashMessage });
-    });
+    User.findOne(
+      { _id: req.session.user._id }
+    ).then((currentUser) => {
+
+      Post.find((err, posts) => {
+        if (err) {
+          throw err;
+        }
+        console.log("CURRENT USER: " + currentUser._id)
+        res.render("posts/index", { posts: posts.reverse(), user: currentUser, flashMessage });
+      });
+    })
   },
 
   New: (req, res) => {

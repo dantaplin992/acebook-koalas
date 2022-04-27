@@ -97,12 +97,12 @@ hbs.registerHelper('show_add_friend_button', (user, postUserId) => {
   let friend = false
   let requested = false
   for (i = 0; i < user.friends.length; i++) {
-    if (user.friends[i]._id === postUserId) { friend = true }
+    if (user.friends[i]._id == postUserId) { friend = true }
   }
   for (i = 0; i < user.pendingRequests.length; i++) {
-    if (user.pendingRequests[i].userId === postUserId) { requested = true }
+    if (user.pendingRequests[i].userId == postUserId) { requested = true }
   }
-  if (user._id === postUserId) return
+  if (user._id == postUserId) return
   if (friend) return '<button class="friend_badge">Friend</button>'
   if (requested) return '<button class="request_badge">Request Sent</button>'
   return `<button class="add_friend_button">+ Add Friend</button>` 
