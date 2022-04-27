@@ -7,6 +7,7 @@ const UserSchema = new mongoose.Schema({
   surname: String,
   friends: Array,
   friendRequests: Array,
+  pendingRequests: Array,
   // profilePic:
   //   {
   //       data: Buffer,
