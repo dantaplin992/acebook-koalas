@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const Post = require("../models/post")
 
 const UsersController = {
   New: (req, res) => {
@@ -19,6 +20,27 @@ const UsersController = {
       { _id: req.session.user._id }
     ).then((result) => {
       res.render("users/profile", { pageHeader: "Profile", user: result });
+    })
+  },
+  Edit: (req, res) => {
+    User.findOne(
+      { _id: req.session.user._id }
+    ).then((currentUser) => {
+      res.render("users/edit", { user: currentUser})
+    })
+  },
+  Update: (req, res) => {
+    console.log(req.body)
+    User.updateOne(
+      { _id: req.body.id },
+      { firstName: req.body.firstName, surname: req.body.surname, email: req.body.email }
+    ).then(() => {
+      Post.updateMany(
+        { userId: req.body.id },
+        { authorFirstName: req.body.firstName, authorSurname: req.body.surname}
+      ).then(() => {
+        res.redirect("/users/profile");
+      })
     })
   }
 };

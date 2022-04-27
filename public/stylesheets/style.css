@@ -300,6 +300,7 @@ input[type=text], input[type=password], input[type=email] {
 #message {
   width: 300px;
   height: 150px;
+  resize: none;
 }
 
 .delete_button_container {

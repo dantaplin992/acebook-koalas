@@ -1,8 +1,14 @@
 <h1 class="page-header">Edit Post</h1>
 <h2>{{user.firstName}} {{user.surname}}</h2>
 <div class="edit_post_form">
-<form id="edit-post-form" action="/posts/edit/{{id}}" method="post">
-<textarea id="message" type="text" name="message" value="" required pattern=".*\S+.*"></textarea>
-<input type="submit" class="submit-button">
-</form>
+  <form id="edit-post-form" action="/posts/edit/{{id}}" method="post">
+  <div class="posts">
+    <div>
+      <textarea id="message" type="text" name="message" value="" required pattern=".*\S+.*">{{msg}}</textarea>
+    </div>
+    <div>
+      <input type="submit" class="submit-button">
+    </div>
+  </div>
+  </form>
 </div>

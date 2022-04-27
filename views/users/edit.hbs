@@ -1,0 +1,12 @@
+<div class="page-header">
+  <h1>Edit Info</h2>
+</div>
+<div class="post">
+  <form action="/users/edit" method="post">
+    <input type="hidden" name="id" value="{{user._id}}" />
+    <div>First Name: <input type="text" name="firstName" value="{{user.firstName}}" /></div>
+    <div>Surname: <input type="text" name="surname" value="{{user.surname}}" /></div>
+    <div>Email: <input type="email" name="email" value="{{user.email}}" /></div>
+    <div><input class="submit-button" type="submit" value="Save"></div>
+  </form>
+</div>
