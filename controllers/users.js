@@ -20,6 +20,22 @@ const UsersController = {
     ).then((result) => {
       res.render("users/profile", { pageHeader: "Profile", user: result });
     })
+  },
+  Edit: (req, res) => {
+    User.findOne(
+      { _id: req.session.user._id }
+    ).then((currentUser) => {
+      res.render("users/edit", { user: currentUser})
+    })
+  },
+  Update: (req, res) => {
+    console.log(req.body)
+    User.updateOne(
+      { _id: req.body.id },
+      { firstName: req.body.firstName, surname: req.body.surname, email: req.body.email }
+    ).then(() => {
+      res.redirect("/users/profile");
+    })
   }
 };
 
