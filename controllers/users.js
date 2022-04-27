@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const Post = require("../models/post")
 
 const UsersController = {
   New: (req, res) => {
@@ -34,7 +35,12 @@ const UsersController = {
       { _id: req.body.id },
       { firstName: req.body.firstName, surname: req.body.surname, email: req.body.email }
     ).then(() => {
-      res.redirect("/users/profile");
+      Post.updateMany(
+        { userId: req.body.id },
+        { authorFirstName: req.body.firstName, authorSurname: req.body.surname}
+      ).then(() => {
+        res.redirect("/users/profile");
+      })
     })
   }
 };
