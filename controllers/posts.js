@@ -1,4 +1,5 @@
 const Post = require("../models/post");
+const Comment = require ("../models/comment");
 
 const PostsController = {
   Index: async (req, res) => {
@@ -60,6 +61,18 @@ const PostsController = {
     console.log(req.params.id)
     res.render("posts/edit", { user: req.session.user, id: req.params.id})
   },
+
+  AddComment: (req, res) => {
+    Post.updateOne( {_id: req.body.post_id}, {$push: {comments: {
+      comment: req.body.comment, 
+      user: req.session.user
+    }}}, (err) => {
+      if (err) {
+        throw err;
+      }
+    }) 
+  }
+  
 }
 
 module.exports = PostsController;

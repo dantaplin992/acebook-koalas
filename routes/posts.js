@@ -8,6 +8,7 @@ router.post("/", PostsController.Create);
 router.get("/new", PostsController.New);
 router.post("/delete/:id", PostsController.Delete);
 router.get("/edit/:id", PostsController.InputEdit);
-router.post("/edit/:id", PostsController.Edit)
+router.post("/edit/:id", PostsController.Edit);
+router.post("/comments/new", PostsController.AddComment);
 
 module.exports = router;
