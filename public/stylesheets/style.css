@@ -355,3 +355,8 @@ button:active, input[type="submit"]:active {
   text-decoration: none;
   float: right;
 }
+
+input[type="text"], input[type="email"], input[type="password"] {
+  border: solid 1px darkgrey;
+  border-radius: 4px;
+}
