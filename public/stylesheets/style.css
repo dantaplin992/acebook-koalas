@@ -330,3 +330,19 @@ button:hover, input[type="submit"]:hover {
 button:active, input[type="submit"]:active {
   background-color: #b2c6ee;
 }
+
+.friend_badge, .request_badge {
+  background-color: forestgreen;
+  color: white;
+  border: none;
+  text-align: center;
+  padding: 5px 28px;
+  font-size: 14px;
+  border-radius: 4px;
+  text-decoration: none;
+  float: right;
+}
+
+.friend_badge:hover, .request_badge:hover {
+  background-color: forestgreen;
+}

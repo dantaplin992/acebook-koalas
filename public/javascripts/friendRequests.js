@@ -9,7 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
     addFriendButtons[i].addEventListener('click', (event) => {
       const parent = event.target.parentElement
       const postId = parent.getAttribute('id')
-      console.log(postId)
+      const authorId = parent.children[7].getAttribute('id')
+      event.target.innerText = "Request Sent"
+      
 
       socket.emit('addFriend', { postId: postId, requestUser: userId })
     })
