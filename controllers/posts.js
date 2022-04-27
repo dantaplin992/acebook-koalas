@@ -64,8 +64,8 @@ const PostsController = {
     }
   }, 
   InputEdit: (req, res) => {
-    console.log(req.params.id)
-    res.render("posts/edit", { user: req.session.user, id: req.params.id})
+    console.log(req.query.post_msg)
+    res.render("posts/edit", { user: req.session.user, id: req.params.id , msg: req.query.post_msg })
   },
 }
 
