@@ -22,7 +22,6 @@ a {
   position:fixed;
   width: 100%;
   height: 7%;
-  
 }
 
 h1 {
@@ -191,10 +190,6 @@ input[type=text], input[type=password], input[type=email] {
   text-decoration: none;
 }
 
-.add_friend_button {
-  float: right;
-}
-
 .like_button {
   padding: 5px;
 }
@@ -269,20 +264,35 @@ input[type=text], input[type=password], input[type=email] {
   border-radius: 4px;
 }
 
+.post-header, .add_friend_button {
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete_button_container {
+  vertical-align: middle;
+  position: relative;
+  display: inline-block;
+}
+
 .post_author {
   font-size: 18px;
   font-weight: bolder;
-  padding: 2px;
+  padding: 4px;
   width: 40%;
-  margin: auto;
-  float: left;
+  text-align: left;
 }
 
 .post_content {
+  margin: 0 auto;
+  margin-top: 8px;
   font-size: 14px;
-  margin-top: 8%;
   padding: 2%;
   text-align: center;
+  width: auto;
+  height: auto;
+  background-color: whitesmoke;
+  border-radius: 10px;
 }
 
 .post_date {
@@ -322,6 +332,37 @@ input[type=text], input[type=password], input[type=email] {
 
 .request_message_reject {
   color:crimson;
+}
+
+#comment-box {
+  background-color: whitesmoke;
+  border-radius: 30px;
+  border: none;
+  width: 500px;
+  height: 30px;
+  margin-top: 20px;
+  padding-left: 20px;
+}
+
+.comments-ul li {
+  list-style: none;
+}
+
+.comment-container {
+  background-color: whitesmoke;
+  border-radius: 30px;
+  border: none;
+  width: fit-content;
+  block-size: fit-content;
+  height: auto;
+  margin-top: 20px;
+  padding-left: 20px;
+}
+
+.comment-author {
+  font-weight: bold;
+}
+.comment-text {
 }
 
 button:hover, input[type="submit"]:hover {

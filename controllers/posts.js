@@ -1,6 +1,7 @@
 const Post = require("../models/post");
 const User = require("../models/user")
 
+
 const PostsController = {
   Index: async (req, res) => {
     const flashMessage = await req.consumeFlash('wrongUser');
@@ -67,6 +68,17 @@ const PostsController = {
     console.log(req.query.post_msg)
     res.render("posts/edit", { user: req.session.user, id: req.params.id , msg: req.query.post_msg })
   },
+
+  AddComment: async (req, res) => {
+    await Post.updateOne( {_id: req.body.post_id }, {$addToSet: {comments: {
+      comment: req.body.comment, 
+      user: req.session.user
+    }}}, (err) => {
+      if (err) {
+        throw err;
+      }
+    }) 
+  }
 }
 
 module.exports = PostsController;
