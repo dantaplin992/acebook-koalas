@@ -1,20 +1,5 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-  // function sendData(form) {
-  //   const XHR = new XMLHttpRequest();
-  //   const formObj = { comment: form.children[0].value, post_id: form.children[1].value }
-  //   console.log(formObj)
-  //   XHR.addEventListener( "load", function() {
-  //     console.log("data sent")
-  //   });
-
-  //   XHR.addEventListener( "error", function() {
-  //     console.log("error");
-  //   });
-
-  //   XHR.open("POST", "/posts/comments/new", true);
-  //   XHR.send( "param1=value1&param2=value2" )
-  // }
   
   async function postData(url = '' , form) {
     const formObj = { comment: form.children[0].value, post_id: form.children[1].value }
@@ -42,11 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
   forms.forEach( (form) => {
     form.addEventListener("submit", function (event) {
     event.preventDefault();
-    console.log("post_id", event.target.post_id.value);
-    console.log("data sent")
     
     let list = document.getElementById(`list_${event.target.post_id.value}`);
-    console.log("list", list)
     let comment = document.createTextNode(event.target.comment.value);
     let user = document.createTextNode("You just commented: ");
     

@@ -57,7 +57,7 @@ h3 {
   background-color: whitesmoke;
 }
 
-.submit-button {
+.submit-button, .edit_info_button, .save_info_button, .accept_friend, .reject_friend {
   background-color: #4267B2;
   color: white;
   border: none;
@@ -66,6 +66,7 @@ h3 {
   font-size: 14px;
   display: inline-block;
   border-radius: 4px;
+  margin-top: 1%;
 }
 
 input[type=text], input[type=password], input[type=email] {
@@ -361,8 +362,6 @@ input[type=text], input[type=password], input[type=email] {
 
 .comment-author {
   font-weight: bold;
-}
-.comment-text {
 }
 
 button:hover, input[type="submit"]:hover {
