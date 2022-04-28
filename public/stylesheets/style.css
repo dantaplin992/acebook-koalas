@@ -316,7 +316,7 @@ input[type=text], input[type=password], input[type=email] {
   float: right;
 }
 
-.request_message_accept {
+.request_message_accept, #info_message {
   color:forestgreen;
 }
 
@@ -356,7 +356,7 @@ button:active, input[type="submit"]:active {
   float: right;
 }
 
-input[type="text"], input[type="email"], input[type="password"] {
+input[type="text"], input[type="email"], input[type="password"], textarea {
   border: solid 1px darkgrey;
   border-radius: 4px;
 }
