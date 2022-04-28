@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
   // function sendData(form) {
   //   const XHR = new XMLHttpRequest();
@@ -17,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
   
   async function postData(url = '' , form) {
     const formObj = { comment: form.children[0].value, post_id: form.children[1].value }
-    console.log(formObj)
     const res = await fetch(url, {
       method: "POST",
       mode: 'cors',
@@ -30,8 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
       referrerPolicy: 'no-referrer',
       body: JSON.stringify(formObj),
     })
-    console.log(res.json())
-    return res.json()
+
+
+    return res.json();
+
   }
 
   
@@ -40,29 +42,40 @@ document.addEventListener('DOMContentLoaded', () => {
   forms.forEach( (form) => {
     form.addEventListener("submit", function (event) {
     event.preventDefault();
-    console.log(event.target.comment)
+    console.log("post_id", event.target.post_id.value);
     console.log("data sent")
+    
+    let list = document.getElementById(`list_${event.target.post_id.value}`);
+    console.log("list", list)
+    let comment = document.createTextNode(event.target.comment.value);
+    let user = document.createTextNode("You just commented: ");
+    
+
+    var container = document.createElement("div");
+    container.classList.add("comment-container");
+
+    var text = document.createElement("li");
+    var author = document.createElement("li")
+    author.classList.add("comment-author");
+    text.classList.add("comment-text");
+    
+    container.appendChild(author);
+    container.appendChild(text);
+    author.appendChild(user);
+    text.appendChild(comment);
+    list.appendChild(container);
+
 
     postData("posts/comments/new", event.target)
     .then(data => {
-    console.log(data)
+    console.log(data);
+
   })
-    // sendData(event.target);
+
     })
   });
   
-  
 
-  // var button = document.getElementById("add-comment");
-  //   button.addEventListener("click", function() {
-  //   console.log('button clicked');
-  //   var commentBoxValue = document.getElementById("comment-box").value;
-  
-  //   var li = document.createElement("li");
-  //   var text = document.createTextNode(commentBoxValue);
-  //   li.appendChild(text);
-  //   document.getElementById("comment-list").appendChild(li);
-  // })
  
 })
 

@@ -279,10 +279,16 @@ input[type=text], input[type=password], input[type=email] {
 }
 
 .post_content {
+  margin: 0 auto;
   font-size: 14px;
-  margin-top: 8%;
+  margin-top: 3%;
   padding: 2%;
   text-align: center;
+  width: auto;
+  height: auto;
+  background-color: whitesmoke;
+  border-radius: 10px;
+
 }
 
 .post_date {
@@ -321,4 +327,48 @@ input[type=text], input[type=password], input[type=email] {
 
 .request_message_reject {
   color:crimson;
+}
+
+#comment-box {
+  background-color: whitesmoke;
+  border-radius: 30px;
+  border: none;
+  width: 500px;
+  height: 30px;
+  margin-top: 20px;
+  padding-left: 20px;
+  
+
+}
+
+.author-options {
+  display: inline;
+}
+
+.delete_button_container {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  left: 135px;
+}
+
+.comments-ul li {
+  list-style: none;
+}
+
+.comment-container {
+  background-color: whitesmoke;
+  border-radius: 30px;
+  border: none;
+  width: fit-content;
+  block-size: fit-content;
+  height: auto;
+  margin-top: 20px;
+  padding-left: 20px;
+}
+
+.comment-author {
+  font-weight: bold;
+}
+.comment-text {
 }

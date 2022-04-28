@@ -63,8 +63,6 @@ const PostsController = {
   },
 
   AddComment: async (req, res) => {
-    await console.log("body", req.body)
-    console.log("sesh", req.session.user)
     await Post.updateOne( {_id: req.body.post_id }, {$addToSet: {comments: {
       comment: req.body.comment, 
       user: req.session.user
