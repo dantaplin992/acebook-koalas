@@ -2,19 +2,22 @@
   <meta name="user_id" content="{{user._id}}">
   <script src="https://cdn.socket.io/3.0.5/socket.io.min.js"></script>
   <script src="/javascripts/acceptRejectRequests.js"></script>
+  <script src="/javascripts/editUserInfo.js"></script>
 </head>
 <body>
 <div class="page-header">
   <h1>{{pageHeader}}</h2>
 </div>
 <h2>Hello, {{user.firstName}}</h2>
-<div class="post">
+<div class="post" id="info_section">
   <h2>Info:</h2>
-  <ul>
-    <li>First name: {{user.firstName}}</li>
-    <li>Surname: {{user.surname}}</li>
-    <li>E-mail: {{user.email}}</li>
+  <div id="info_message"></div>
+  <ul id="info_list">
+    <li class="info_item">First name: {{user.firstName}}</li>
+    <li class="info_item">Surname: {{user.surname}}</li>
+    <li class="info_item">E-mail: {{user.email}}</li>
   </ul>
+  <button id="edit_info_button" class="edit_info_button">Edit Info</button>
 </div>
 <div class="post" id="friends_section">
   <h2>Friends:</h2>
@@ -35,5 +38,10 @@
       <button class="reject_friend">Reject</button>
     </div>
   {{/each}}
+</div>
+<div class="post">
+  <form action="/users/delete", method="post">
+    <button class="submit-button">Delete Account</button>
+  </form>
 </div>
 </body>

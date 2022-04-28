@@ -180,16 +180,22 @@ io.on('connection', (socket) => {
       const recipientUser = result.userId
       console.log(recipientUser)
 
-      User.findOne(
-        { _id: params.requestUser }
-      ).then((requester) => {
+      User.updateOne(
+        { _id: params.requestUser },
+        { $push: { pendingRequests: result} }
+      ).then(() => {
 
-        console.log("Requested by: " + requester)
-
-        User.updateOne(
-          { _id: recipientUser },
-          { $push: { friendRequests: requester } }
-        ).then((res) => {
+        User.findOne(
+          { _id: params.requestUser }
+        ).then((requester) => {
+          
+          console.log("Pending: " + requester.pendingRequests[0])
+          
+          User.updateOne(
+            { _id: recipientUser },
+            { $push: { friendRequests: requester } }
+            ).then((res) => {
+          })
         })
       })
     })
@@ -204,8 +210,17 @@ io.on('connection', (socket) => {
         { _id: params.myId },
         { $push: { friends: result }, $pull: { friendRequests: result } }
       ).then(() => {
-        console.log(result)
-        socket.emit('acceptedFriend', result)
+        User.findOne(
+          { _id: params.myId }
+        ).then((me) => {
+          User.updateOne(
+            { _id: params.friendId },
+            { $push: { friends: me} }
+          ).then(() => {
+            console.log(result)
+            socket.emit('acceptedFriend', result)
+          })
+        })
       })
     })
   })
@@ -221,6 +236,29 @@ io.on('connection', (socket) => {
         { $pull: { friendRequests: result } }
       ).then(() => {
         socket.emit('rejectedFriend', result)
+      })
+    })
+  })
+
+  socket.on('updateUserInfo', (params) => {
+    console.log(params)
+    User.updateOne(
+      { _id: params.userId },
+      {
+        firstName: params.newFirstName,
+        surname: params.newSurname,
+        email: params.newEmail,
+      }
+    ).then((res) => {
+      console.log(res)
+      Post.updateMany(
+        { userId: params.userId },
+        {
+          authorFirstName: params.newFirstName,
+          authorSurname: params.newSurname
+        }
+      ).then(() => {
+      console.log("updated posts")
       })
     })
   })

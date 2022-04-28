@@ -27,6 +27,7 @@
         <div class="author-options">
           <div class="delete_button_container">
             <form action="/posts/edit/{{this.id}}" method="get">
+            <input type="hidden" name="post_msg" value="{{this.message}}">
             <input type="hidden" name="userId" value="{{user._id}}">
             <input type="hidden" name="post_id" value="{{this.id}}">
             {{{ show_edit_post_button ../user._id this.userId }}}
@@ -50,7 +51,6 @@
       <div class="post_likes">
         <span id="post_id" hidden>{{this.id}}</span><span id="likes_count">{{this.likes.length}}</span><button class="like_button">Like</button>
       </div>
-      
       <div>
         <hr>
       <form class="create-comment">
@@ -69,6 +69,7 @@
           {{/each}}
         </ul>
       </div>
+      <div id="{{this.userId}}"></div>
     </div>
     {{/each}}
   </div>

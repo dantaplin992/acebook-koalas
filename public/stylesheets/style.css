@@ -21,8 +21,7 @@ a {
   margin-bottom: 10px;
   position:fixed;
   width: 100%;
-  height: 5%;
-  
+  height: 7%;
 }
 
 h1 {
@@ -191,10 +190,6 @@ input[type=text], input[type=password], input[type=email] {
   text-decoration: none;
 }
 
-/* .add_friend_button {
-  float: right;
-} */
-
 .like_button {
   padding: 5px;
 }
@@ -274,7 +269,6 @@ input[type=text], input[type=password], input[type=email] {
   justify-content: space-between;
 }
 
-
 .delete_button_container {
   vertical-align: middle;
   position: relative;
@@ -299,7 +293,6 @@ input[type=text], input[type=password], input[type=email] {
   height: auto;
   background-color: whitesmoke;
   border-radius: 10px;
-
 }
 
 .post_date {
@@ -317,6 +310,7 @@ input[type=text], input[type=password], input[type=email] {
 #message {
   width: 300px;
   height: 150px;
+  resize: none;
 }
 
 .delete_button_container {
@@ -332,7 +326,7 @@ input[type=text], input[type=password], input[type=email] {
   float: right;
 }
 
-.request_message_accept {
+.request_message_accept, #info_message {
   color:forestgreen;
 }
 
@@ -348,10 +342,7 @@ input[type=text], input[type=password], input[type=email] {
   height: 30px;
   margin-top: 20px;
   padding-left: 20px;
-  
-
 }
-
 
 .comments-ul li {
   list-style: none;
@@ -372,4 +363,41 @@ input[type=text], input[type=password], input[type=email] {
   font-weight: bold;
 }
 .comment-text {
+}
+
+button:hover, input[type="submit"]:hover {
+  background-color: #5a80cd;
+}
+
+button:active, input[type="submit"]:active {
+  background-color: #b2c6ee;
+}
+
+.friend_badge, .friend_badge:hover {
+  background-color: forestgreen;
+  color: white;
+  border: none;
+  text-align: center;
+  padding: 5px 28px;
+  font-size: 14px;
+  border-radius: 4px;
+  text-decoration: none;
+  float: right;
+}
+
+.request_badge, .request_badge:hover {
+  background-color: rgb(237, 205, 27);
+  color: white;
+  border: none;
+  text-align: center;
+  padding: 5px 28px;
+  font-size: 14px;
+  border-radius: 4px;
+  text-decoration: none;
+  float: right;
+}
+
+input[type="text"], input[type="email"], input[type="password"], textarea {
+  border: solid 1px darkgrey;
+  border-radius: 4px;
 }

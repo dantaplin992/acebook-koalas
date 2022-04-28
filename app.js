@@ -84,19 +84,26 @@ app.use((err, req, res) => {
 ///hbs helper
 
 hbs.registerHelper('show_edit_post_button', (userId, postUserId) => { 
-  if (userId === postUserId) {
+  if (userId == postUserId) {
     return `<span id="edit_post"><button class="submit-button">Edit post</button></span>` }
 });
 
 hbs.registerHelper('show_delete_post_button', (userId, postUserId) => { 
-  if (userId === postUserId) {
+  if (userId == postUserId) {
     return ` <span id="delete_post"><button class="submit-button">Delete post</button></span>` }
 });
 
-hbs.registerHelper('show_add_friend_button', (userId, postUserId) => { 
-  if (userId != postUserId) {
-    return `<button class="add_friend_button">+ Add Friend</button>` }
-});
+hbs.registerHelper('show_add_friend_button', (user, postUserId) => { 
+  let friend, requested, receivedRequest
+  for (i = 0; i < user.friends.length; i++) { if (user.friends[i]._id == postUserId) friend = true }
+  for (i = 0; i < user.pendingRequests.length; i++) { if (user.pendingRequests[i].userId == postUserId) requested = true }
+  for (i = 0; i < user.friendRequests.length; i++) { if (user.friendRequests[i]._id == postUserId) receivedRequest = true }
 
+  if (user._id == postUserId) return
+  if (friend) return '<button class="friend_badge">Friend</button>'
+  if (requested) return '<button class="request_badge">Request Sent</button>'
+  if (receivedRequest) return '<button class="request_badge">Received Friend Request</button>'
+  return `<button class="add_friend_button">+ Add Friend</button>` 
+});
 
 module.exports = app;

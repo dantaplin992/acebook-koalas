@@ -1,0 +1,19 @@
+<head>
+
+</head>
+<body>
+  <div class="page-header">
+    <h1>Edit Info</h2>
+  </div>
+  <div class="posts">
+    <div class="post">
+      <form action="/users/edit" method="post">
+        <input type="hidden" name="id" value="{{user._id}}" />
+        <div class="delete_button_container">First Name: <input type="text" name="firstName" value="{{user.firstName}}" /></div>
+        <div class="delete_button_container">Surname: <input type="text" name="surname" value="{{user.surname}}" /></div>
+        <div class="delete_button_container">Email: <input type="email" name="email" value="{{user.email}}" /></div>
+        <div class="delete_button_container"><input class="submit-button" type="submit" value="Save"></div>
+      </form>
+    </div>
+  </div>
+</body>
