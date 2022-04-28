@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   for (i = 0; i < addFriendButtons.length; i++) {
     console.log('Found friend button')
     addFriendButtons[i].addEventListener('click', (event) => {
-      const parent = event.target.parentElement
+      const parent = event.target.parentElement.parentElement
       const postId = parent.getAttribute('id')
       console.log(postId)
 

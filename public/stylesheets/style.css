@@ -191,9 +191,9 @@ input[type=text], input[type=password], input[type=email] {
   text-decoration: none;
 }
 
-.add_friend_button {
+/* .add_friend_button {
   float: right;
-}
+} */
 
 .like_button {
   padding: 5px;
@@ -269,19 +269,30 @@ input[type=text], input[type=password], input[type=email] {
   border-radius: 4px;
 }
 
+.post-header, .add_friend_button {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.delete_button_container {
+  vertical-align: middle;
+  position: relative;
+  display: inline-block;
+}
+
 .post_author {
   font-size: 18px;
   font-weight: bolder;
-  padding: 2px;
+  padding: 4px;
   width: 40%;
-  margin: auto;
-  float: left;
+  text-align: left;
 }
 
 .post_content {
   margin: 0 auto;
+  margin-top: 8px;
   font-size: 14px;
-  margin-top: 3%;
   padding: 2%;
   text-align: center;
   width: auto;
@@ -341,16 +352,6 @@ input[type=text], input[type=password], input[type=email] {
 
 }
 
-.author-options {
-  display: inline;
-}
-
-.delete_button_container {
-  display: inline-block;
-  vertical-align: middle;
-  position: relative;
-  left: 135px;
-}
 
 .comments-ul li {
   list-style: none;
