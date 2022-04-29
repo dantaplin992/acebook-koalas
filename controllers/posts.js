@@ -4,7 +4,7 @@ const User = require("../models/user")
 
 const PostsController = {
   Index: async (req, res) => {
-    // const flashMessage = await req.consumeFlash('wrongUser');
+    const flashMessage = await req.consumeFlash('wrongUser');
     User.findOne(
       { _id: req.session.user._id }
     ).then((currentUser) => {
@@ -14,7 +14,7 @@ const PostsController = {
           throw err;
         }
         console.log("CURRENT USER: " + currentUser._id)
-        res.render("posts/index", { posts: posts.reverse(), user: currentUser });
+        res.render("posts/index", { posts: posts.reverse(), user: currentUser, flashMessage });
       });
     })
   },
@@ -43,7 +43,7 @@ const PostsController = {
         await post.deleteOne();
         res.status(200).redirect("/posts");
       } else {
-        // await req.flash('wrongUser', "You don't have authorization for this action")
+        await req.flash('wrongUser', "You don't have authorization for this action")
         res.redirect('/posts');
       }
     } catch (err) {
@@ -57,7 +57,7 @@ const PostsController = {
         await post.updateOne({message: req.body.message})
         res.status(200).redirect("/posts");
       } else {
-        // await req.flash('wrongUser', "You don't have authorization for this action")
+        await req.flash('wrongUser', "You don't have authorization for this action")
         res.redirect('/posts');
       }
     } catch (err) {
