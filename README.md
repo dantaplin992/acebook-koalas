@@ -14,42 +14,13 @@ It uses:
 
 ## Card wall
 
-REPLACE THIS TEXT WITH A LINK TO YOUR CARD WALL
+https://trello.com/b/NMjBSweq/koalas
 
 ## Quickstart
 
-### Install Node.js
+Visit the following site to see the deployed version on the app:
 
-1. Install Node Version Manager (NVM)
-   ```
-   brew install nvm
-   ```
-   Then follow the instructions to update your `~/.bash_profile`.
-2. Open a new terminal
-3. Install the latest long term support (LTS) version of [Node.js](https://nodejs.org/en/), currently `16.14.0`.
-   ```
-   nvm install 16
-   ```
-
-### Set up your project
-
-1. Fork this repository
-2. Rename your fork to `acebook-<team name>`
-3. Clone your fork to your local machine
-4. Install Node.js dependencies
-   ```
-   npm install
-   ```
-5. Install an ESLint plugin for your editor. For example: [linter-eslint](https://github.com/AtomLinter/linter-eslint) for Atom.
-6. Install MongoDB
-   ```
-   brew tap mongodb/brew
-   brew install mongodb-community@4.4
-   ```
-7. Start MongoDB
-   ```
-   brew services start mongodb-community@4.4
-   ```
+https://acebook-koala.herokuapp.com/
 
 ### Start
 
